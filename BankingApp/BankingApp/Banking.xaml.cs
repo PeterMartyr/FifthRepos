@@ -94,13 +94,6 @@ namespace BankingApp
                     Keyboard.Focus(amountTextBox);
                     amountTextBox.SelectAll();
                 }
-                else if (((fromRadioButtonChecked == "InvestmentRadioButtonOn")&& (amountTransfer + 30.0m > fromBalance)) ||
-                    ((fromRadioButtonChecked == "SavingRadioButtonOn") && (amountTransfer > fromBalance)))
-                {
-                    MessageBox.Show("Error! You have insufficient fund. Enter another amount");
-                    Keyboard.Focus(amountTextBox);
-                    amountTextBox.SelectAll();
-                }
                 else
                 {
                     // Test which From radio button and which To radio button are on and calculate appropriate balance
@@ -162,7 +155,7 @@ namespace BankingApp
                             break;
 
                         case "InvestmentRadioButtonOn&SavingsRadioButtonOn":  // from Investment to Saving
-                            fromBalance = fromBalance - amountTransfer - 30.0m;
+                            fromBalance = fromBalance - amountTransfer;
                             cInvestmentBalance = fromBalance;
                             fromBalanceLabel.Content = cInvestmentBalance.ToString("C");
 
@@ -172,7 +165,7 @@ namespace BankingApp
                             break;
 
                         case "InvestmentRadioButtonOn&ChequeRadioButtonOn":  //from Investment to Cheque
-                            fromBalance = fromBalance - amountTransfer -30.0m;
+                            fromBalance = fromBalance - amountTransfer;
                             cInvestmentBalance = fromBalance;
                             fromBalanceLabel.Content = cInvestmentBalance.ToString("C");
 
